@@ -11,7 +11,6 @@ from rclpy.qos import QoSProfile, DurabilityPolicy
 from std_msgs.msg import String, Bool, Float64MultiArray
 from sensor_msgs.msg import JointState
 from rosgraph_msgs.msg import Clock
-#!TODO AGREGAR GRIPPER A MSJOBJ Y A MENSAJE FINAL
 """This nodes handle the inverse kinematics calculation and send the reasult to
 the controller node and then to the indermediary node"""
 

@@ -81,9 +81,16 @@ class MainNode(Node):
 
     def input_obj_position_callback(self, msg):
         self.get_logger().info(f"Received input object position: {msg.data}")
+        if len(msg.data) != 7:
+            self.get_logger().error(f"Expected 7 elements in input_obj_position, but got {len(msg.data)}, try -> [x, y, z, Rx, Ry, Rz, gripper_position]")
+            return
+        msg.data = self.transform_deg2rad(msg.data)
         self.publisher_obj_position.publish(msg)
         # [x, y, z, roll, pitch, yaw, gripper_position]
-
+        
+    def transform_deg2rad(self, position):
+        roll, pitch, yaw = np.deg2rad(position[3:6])
+        return [position[0], position[1], position[2], roll, pitch, yaw, position[6]]
 
 def main(args=None):
     rclpy.init(args=args)
