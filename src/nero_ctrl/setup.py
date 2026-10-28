@@ -32,6 +32,7 @@ setup(
             'main_node = nero_ctrl.main_node:main',
             'controller_node = nero_ctrl.controller_node:main',
 			'ik_node = nero_ctrl.IK_node:main',
+			'calibration_node = nero_ctrl.calibration_module:main',
 		],
 	},
 )
