@@ -48,10 +48,10 @@ Force range: 0.5 to 3.0 N
 
 ## To send obj point (with gripper)
 ```
-ros2 topic pub --once /input_obj_position std_msgs/msg/Float64MultiArray \
-"{data: [0.0, -0.40, 0.0, 2.0, 0.0, 0.0, 0.05]}"
+ros2 topic pub --once /input_obj_position std_msgs/msg/Float64MultiArray "{data: [-0.40, 0.0, 0.3, -95.0, 74.0, -179.0, 0.0]}"
+
 ```
-[x, y, z, roll, pitch, yaw, gripper_position]
+[x, y, z, Rx, Ry, Rz, gripper_position]
 
 ## Launch nero_can_ctrl
 ```
