@@ -5,10 +5,10 @@
 
   <default>
     <default class="nero">
-      <joint frictionloss="1" armature="0.01" damping="2000"/>
+      <joint frictionloss="1" armature="0.01" damping="2"/>
       <position inheritrange="1" forcerange="-100 100"/>
       <default class="finger">
-        <joint frictionloss="1" type="slide" damping="1000"/>
+        <joint frictionloss="1" type="slide" damping="1"/>
         <position forcerange="-10 10"/>
       </default>
       <default class="visual">
@@ -54,12 +54,12 @@
         <geom type="mesh" mesh="link1" group="3" rgba="0 0 0 0"/>
         <body name="link2" quat="1.89469e-08 1.89469e-08 0.707107 -0.707107">
           <inertial pos="0.000796867 -0.0789033 0.00111849" quat="0.724173 0.689546 -0.00281155 -0.00963045" mass="0.693819" diaginertia="0.00201137 0.00182229 0.000632162"/>
-          <joint name="joint2" pos="0 0 0" axis="0 0 1" range="-0.261799 3.31613" actuatorfrcrange="-100 100"/>
+          <joint name="joint2" pos="0 0 0" axis="0 0 1" range="-1.74 1.74" actuatorfrcrange="-100 100"/>
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link2" material="nero_gray"/>
           <geom type="mesh" mesh="link2" group="3" rgba="0 0 0 0"/>
           <body name="link3" pos="0 -0.31 0" quat="-1.37922e-08 1.37922e-08 -0.707107 0.707107">
             <inertial pos="0.000145134 -0.00121379 -0.0486114" quat="0.999978 -0.00572699 -0.000503892 -0.00336231" mass="0.672465" diaginertia="0.0034323 0.00338703 0.000288126"/>
-            <joint name="joint3" pos="0 0 0" axis="0 0 1" range="-2.79253 2.79253" actuatorfrcrange="-100 100"/>
+            <joint name="joint3" pos="0 0 0" axis="0 0 1" range="-2.75 2.75" actuatorfrcrange="-100 100"/>
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="link3" material="nero_black"/>
             <geom type="mesh" mesh="link3" group="3" rgba="0 0 0 0"/>
             <body name="link4" quat="-1.37922e-08 1.37922e-08 -0.707107 0.707107">
@@ -109,6 +109,7 @@
   </worldbody>
 
   <contact>
+    <exclude body1="link5" body2="link7"/>
     <exclude body1="base_link" body2="link1"/>
   </contact>
   
