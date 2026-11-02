@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import rclpy
+import time
 from rclpy.node import Node
 from std_srvs.srv import Trigger
 from typing import Any, cast
@@ -88,7 +89,15 @@ class NeroCalibrationNode(Node):
 			)
 			self.robot.calibrate_joint(self.joint_index)
 
-			if not self.robot.enable(self.joint_index):
+			enable_deadline = time.monotonic() + 5.0
+			enabled = False
+			while time.monotonic() < enable_deadline:
+				if self.robot.enable(self.joint_index):
+					enabled = True
+					break
+				time.sleep(0.1)
+
+			if not enabled:
 				response.success = False
 				response.message = (
 					'Calibration command was sent, but the joint could not '
